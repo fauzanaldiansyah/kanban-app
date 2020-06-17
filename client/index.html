@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="665480961231-nghj5fvinceftfn0epm63i2n29mi57or.apps.googleusercontent.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>KANBAN!</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</head>
+<body>
+
+  <center>
+  <!-- LOGIN PAGE  -->
+  <section class = 'login-page'>
+    <div id="login">
+      <h1>Login</h1>
+      <form class="my-4" onsubmit="login(event)" autocomplete="chrome-off">
+        <div class="form-group col-10">
+          <label for="email-login">Email</label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            name="email-login"
+            id="email-login"
+            required
+          />
+        </div>
+        <div class="form-group col-10">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            name="password-login"
+            id="password-login"
+            required
+          />
+        </div>
+        <button id="btn-login" type="submit" class="btn btn-dark btn-lg">
+          Submit
+        </button>
+        <br>
+        <br>
+
+        <h4> No Account? </h4>
+        <button id="btn-regist" onclick="registerFormPage()" class="btn btn-dark btn-lg">
+          Register
+        </button>
+        <br>
+        <br>
+        <h4> or Login using: </h4>
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      </div>
+        
+      </form>
+    </div>
+  </section>
+
+  <!-- REGISTER PAGE -->
+  <section class = 'register-form-page'>
+    <h1>
+      Register Account
+    </h1>
+    <br>
+    <br>
+    <div class = 'add-user'>
+      <form onsubmit="registerUser(event)" autocomplete="chrome-off">
+        <div class="form-group col-10">
+          <label for="email-register">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            name="email-register"
+            id="email-register"
+            required
+          />
+        </div> 
+        <div class="form-group col-10">
+          <label for="password-register">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password-register"
+            id="password-register"
+            required
+          />
+        </div> 
+        <div class="form-group col-10">
+          <label for="organization-register">Organization</label>
+          <input
+            type="text"
+            class="form-control"
+            name="organization-register"
+            id="organization-register"
+          />
+        </div>
+        <button id="btn-register" type="submit" class="btn btn-dark btn-lg">
+          Register Account
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- HOME PAGE  -->
+  <section class = 'home-page'>
+
+    <nav class="navbar navbar-light bg-dark">
+      <a onclick="auth()" class="navbar-brand text-white display-4">Navigation</a>
+      </div>
+      <button class="btn-secondary btn-lg" onclick = "logout()"> Logout </button>
+    </nav>
+    <br>
+    <br>
+
+    <button class="btn btn-dark btn-lg" onclick="addFormPage()">Add Task</button>
+    <br>
+    <br>
+    <br>
+    <div class = 'container-home'>
+        <table class="table text-center" >
+            <tablehead class="thead-light">
+            <th> Task </th>
+            <th> Description </th>
+            </tablehead>
+            <tbody id='tasks-data'>
+
+            </tbody> 
+          </table>
+    </div>
+    </section>
+
+    <!-- ADD TASK PAGE -->
+  <section class = 'add-form-page'>
+
+    <nav class="navbar navbar-light bg-dark">
+
+  <button class="btn-secondary btn-lg" onclick = 'toHome()'> Home </button>
+      <a onclick="auth()" class="navbar-brand text-white display-4">NAVIGATION</a>
+      </div>
+      <button class="btn-secondary btn-lg" onclick = "logout()"> Logout </button>
+    </nav>
+    <br>
+<br>
+<br>
+<h1>
+  Add New Task
+</h1>
+  <br>
+  <br>
+  <div class = 'add-task'>
+    <form onsubmit="addTask(event)">
+      <div class="form-group col-10">
+        <label for="title">Task</label>
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          id="title"
+          required
+        />
+      </div> 
+      <div class="form-group col-10">
+        <label for="description">Category</label>
+        <input
+          type="text"
+          class="form-control"
+          name="category"
+          id="category"
+          required
+        />
+      </div> 
+      <button class="btn-secondary btn-lg" type="submit" class="btn btn-primary">
+        Add Task
+      </button>
+    </form>
+  </div>
+</section>
+
+  <!-- UPDATE TASK PAGE -->
+  <section class = 'update-form-page'>
+  
+    <nav class="navbar navbar-light bg-dark">
+
+      <button class="btn-secondary btn-lg" onclick = 'toHome()'> Home </button>
+          <a onclick="auth()" class="navbar-brand text-white display-4">Kanban</a>
+          </div>
+          <button class="btn-secondary btn-lg" onclick = "logout()"> Logout </button>
+        </nav>
+        <br>
+    <br>
+    <br>
+    <h1>
+      Edit Your Task
+    </h1>
+      <br>
+      <br>
+    <div class = 'edit-task'>
+      <form onsubmit="editTask(event)">
+        <div class="form-group col-10">
+          <label for="title-edit">Task</label>
+          <input
+            type="text"
+            class="form-control"
+            name="title-edit"
+            id="title-edit"
+            required
+          />
+        </div> 
+        <div class="form-group col-10">
+          <label for="description-edit">Category</label>
+          <input
+            type="text"
+            class="form-control"
+            name="category-edit"
+            id="category-edit"
+            required
+          />
+        </div> 
+        <button class="btn-secondary btn-lg" type="submit">
+          Edit Task
+        </button>
+      </form>
+    </div>
+  </section>
+  </center>
+
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous">
+</script>
+   <script src = "main.js"></script>
+</body>
+
+<hr>
+
+<footer class="page-footer font-small blue">
+
+  <div class="footer-copyright special-color-dark text-center py-3">
+    <h5> Fauzan Aldiansyah </h5>
+    <p>Project Week 2 </p>
+  </div>
+
+</footer>
+
+</html>
