@@ -1,0 +1,34 @@
+
+.container {
+    margin: auto;
+}
+.row{
+    width: 100vw;
+}
+.card{
+            margin: 0 auto; /* Added */
+            float: none; /* Added */
+            margin-bottom: 10px; /* Added */
+    
+}
+.custom-navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(228,193,0);
+}
+.wrapper{
+    text-align: center;
+    background-color: rgb(228,193,0);
+}
+.button{
+    position: absolute;
+    top: 50%;
+}
+.btn{
+    margin:20px;
+    justify-content:center;
+    text-align: center;
+}
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */

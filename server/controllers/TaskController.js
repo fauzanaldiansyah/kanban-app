@@ -1,15 +1,11 @@
-const { Task } = require('../models')
+const { Task , User } = require('../models')
 
 class TaskController{
 
     static findAll(req,res,next){
-        Task.findAll(
-        //     {
-        //     where:{
-        //         UserId: req.userData.id
-        //     }
-        // }
-        )
+        Task.findAll({
+            include: [User]
+        })
         .then(data => {
             res.status(200).json(data)
         })
