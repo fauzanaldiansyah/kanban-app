@@ -24,7 +24,7 @@ export default {
         console.log('masukdelete')
         axios({
           method: "delete",
-          url: `http://localhost:3000/tasks/${id}`,
+          url: `http://ka-kanban.herokuapp.com/tasks/${id}`,
           headers: {
             access_token: localStorage.access_token
           }
@@ -39,7 +39,7 @@ export default {
       updateBack(id,title,category) {
         axios({
           method: "put",
-          url: `http://localhost:3000/tasks/${id}`,
+          url: `http://ka-kanban.herokuapp.com/tasks/${id}`,
             headers: {
             access_token: localStorage.access_token
         },
@@ -58,7 +58,7 @@ export default {
       updateUp(id,title,category) {
         axios({
           method: "put",
-          url: `http://localhost:3000/tasks/${id}`,
+          url: `http://ka-kanban.herokuapp.com/tasks/${id}`,
             headers: {
             access_token: localStorage.access_token
         },

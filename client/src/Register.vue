@@ -64,7 +64,7 @@ export default {
     registerNewUser() {
       axios({
         method: "post",
-        url: "http://localhost:3000/users/register" ,
+        url: "http://ka-kanban.herokuapp.com/users/register" ,
         data : {
           email: this.emailRegister,
           password: this.passwordRegister,

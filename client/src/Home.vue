@@ -122,7 +122,7 @@ export default {
       console.log("masukget");
       axios({
         method: "get",
-        url: "http://localhost:3000/tasks",
+        url: "http://ka-kanban.herokuapp.com/tasks",
         headers: {
           access_token: localStorage.access_token
         }
@@ -138,7 +138,7 @@ export default {
     addNewTask(){
       axios({
         method: "post",
-        url: "http://localhost:3000/tasks" ,
+        url: "http://ka-kanban.herokuapp.com/tasks" ,
         headers: {
             access_token: localStorage.access_token
         },
