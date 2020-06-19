@@ -27,7 +27,6 @@ class UserController{
             email : req.body.email,
             password: req.body.password
         }
-
         User.findOne({
             where: {
                 email: login.email
@@ -53,6 +52,7 @@ class UserController{
 
     static googlesign(req, res, next){
         let { id_token } = req.body
+        console.log(id_token,"id_token server")
         let email = null
         const client = new OAuth2Client(process.env.CLIENT_ID)
         client.verifyIdToken({

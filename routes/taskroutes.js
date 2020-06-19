@@ -10,10 +10,8 @@ router.get('/:id', TaskController.findOne)
 
 router.post('/', TaskController.addTask)
 
-router.put('/:id', TaskController.updateTask)
+router.put('/:id', authorization, TaskController.updateTask)
 
-router.delete('/:id', 
-// authorization, 
-TaskController.delete)
+router.delete('/:id', authorization, TaskController.delete)
 
 module.exports = router

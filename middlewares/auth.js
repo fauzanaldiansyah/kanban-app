@@ -31,14 +31,19 @@ const authentication = (req, res, next) => {
 
 const authorization = (req, res, next) => {
     const {id} = req.params
-
     const userData = req.userData.id
-    Task.findByPk(id)
-    .then(data => {cs
+    console.log(userData, '<<<userdata')
+    Task.findOne({
+        where: {
+            id: id
+        }
+    })
+    .then(data => {
+        console.log(data.UserId, userData,'<<<data')
         if(!data){
             next({ name: 'NOT_FOUND_ERROR' , message: 'Data Task Not Found'})
             // res.status(404).json({message : 'Data Task Not Found'})
-        } else if(userData !== data.userId){
+        } else if(userData !== data.UserId){
             next({ name: 'NOT_FOUND_ERROR' , message: `You don't have access`})
             // res.status(403).json({message : 'You dont have access'})
         } else {
